@@ -1,0 +1,480 @@
+/* ===== Стили страницы «Собрать ланч» (подключаются после style.css) ===== */
+
+/* Сетка блюд: 3 колонки по 1fr, зазор 10px */
+.dishes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+/* Карточка блюда: flex-колонка (фото, цена, название, вес, кнопка) */
+.dish {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 40px;
+  border: 2px solid transparent;
+  border-radius: 35px;
+  background-color: #ffffff;
+  filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+/* При наведении — рамка 2px цвета tomato */
+.dish:hover,
+.dish.selected {
+  border-color: tomato;
+}
+
+.dish-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 35px;
+}
+
+.dish-price {
+  margin-top: 24px;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+/* Название занимает всё свободное место: вес и кнопка у всех карточек на одном уровне */
+.dish-name {
+  flex-grow: 1;
+  font-size: 20px;
+}
+
+.dish-weight {
+  margin-top: 12px;
+  font-size: 16px;
+  color: #8a8a8a;
+}
+
+.dish-button {
+  width: 100%;
+  margin-top: 16px;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f1eee9;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: #000000;
+  cursor: pointer;
+}
+
+/* Контекстный селектор: кнопка внутри карточки, на которую навели курсор */
+.dish:hover .dish-button {
+  background-color: #d9d9d9;
+}
+
+/* ===== Фильтры блюд ===== */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin: 0 0 20px;
+}
+
+.filter-button {
+  padding: 3px 10px;
+  border: none;
+  border-radius: 14px;
+  background-color: transparent;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  color: #1e7a34;
+  cursor: pointer;
+}
+
+.filter-button:hover {
+  background-color: #e6f5ea;
+}
+
+/* Выбранный фильтр */
+.filter-button.active {
+  background-color: #c8ecd2;
+}
+
+/* ===== Адаптивность: планшет ===== */
+@media (max-width: 800px) {
+  .dishes {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ===== Адаптивность: телефон ===== */
+@media (max-width: 600px) {
+  .menu-section h2 {
+    text-align: center;
+  }
+
+  .dishes {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Форма заказа ===== */
+
+.order-section {
+  padding: 0 60px 60px;
+}
+
+.order-section h2 {
+  text-align: center;
+}
+
+/* Две колонки формы по центру страницы */
+.order-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 380px));
+  justify-content: center;
+  gap: 0 60px;
+}
+
+.form-column h3 {
+  margin: 0 0 20px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.form-field {
+  margin-bottom: 14px;
+}
+
+.form-field label,
+.delivery-type legend {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+
+/* Общий вид полей: input, select, textarea */
+.form-control {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #000000;
+  border-radius: 2px;
+  background-color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: #000000;
+}
+
+.form-control:focus {
+  outline: 2px solid tomato;
+  outline-offset: 0;
+}
+
+.form-textarea {
+  height: 120px;
+  padding: 10px;
+  resize: vertical;
+}
+
+/* Чекбокс и радиокнопки: переключатель + подпись в одну строку */
+.checkbox-row,
+.radio-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-row label,
+.radio-row label {
+  margin-bottom: 0;
+}
+
+.checkbox-row input,
+.radio-row input {
+  margin: 0;
+  accent-color: tomato;
+  cursor: pointer;
+}
+
+.checkbox-row label,
+.radio-row label {
+  cursor: pointer;
+}
+
+.delivery-type {
+  margin: 0 0 14px;
+  padding: 0;
+  border: none;
+}
+
+.delivery-type legend {
+  padding: 0;
+}
+
+.radio-row {
+  margin-bottom: 6px;
+}
+
+.form-hint {
+  margin-top: 6px;
+  font-size: 15px;
+  font-style: italic;
+}
+
+/* Кнопки формы */
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.form-button {
+  padding: 10px 24px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  background-color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: #000000;
+  cursor: pointer;
+}
+
+.form-button-submit {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.form-button:hover {
+  border-color: tomato;
+  background-color: tomato;
+  color: #ffffff;
+}
+
+/* ===== Адаптивность формы: планшет ===== */
+@media (max-width: 800px) {
+  .order-section {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  /* Колонки друг под другом */
+  .order-form {
+    grid-template-columns: minmax(0, 420px);
+    gap: 20px 0;
+  }
+}
+
+/* ===== Адаптивность формы: телефон ===== */
+@media (max-width: 600px) {
+  .order-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* ===== Блок «Ваш заказ» (заполняется скриптом) ===== */
+.order-empty {
+  margin: 0 0 14px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.order-item,
+.order-total {
+  margin-bottom: 20px;
+}
+
+.order-category {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.order-dish,
+.order-price {
+  margin: 0;
+  font-size: 18px;
+}
+
+/* ===== Блок «Доступные для заказа комбо» ===== */
+.combo-section {
+  margin-bottom: 40px;
+}
+
+.combo-section h2 {
+  text-align: center;
+}
+
+/* Сетка вариантов: 3 колонки в каждой строке */
+.combos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px 20px;
+}
+
+/* Один вариант ланча: flex-контейнер */
+.combo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+/* Одно блюдо: flex-контейнер, главная ось сверху вниз */
+.combo-dish {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.combo-dish img {
+  width: 60px;
+  height: 60px;
+  margin: 0 0 6px;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+/* При наведении: картинка сдвигается вверх и увеличивается */
+.combo-dish img:hover {
+  transform: translateY(-6px) scale(1.2);
+}
+
+.combo-caption {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+/* Пояснение у десерта: шрифт на 2 пункта меньше подписи */
+.combo-note {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+/* ===== Уведомление ===== */
+.notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: min(90vw, 380px);
+  padding: 40px 30px 30px;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.notification-text {
+  margin: 0;
+  font-size: 18px;
+}
+
+.notification-button {
+  padding: 10px 28px;
+  border: 1px solid #000000;
+  border-radius: 14px;
+  background-color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: #000000;
+  cursor: pointer;
+}
+
+.notification-button:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+@media (max-width: 800px) {
+  .combos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .combos {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Панель перехода к оформлению (прилипает к нижнему краю окна) ===== */
+.order-panel {
+  position: sticky;
+  bottom: 0;
+  z-index: 50;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin: 20px -60px -40px;
+  padding: 16px 60px;
+  border-top: 1px solid #000000;
+  background-color: #ffffff;
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.panel-text {
+  margin: 0;
+  font-size: 18px;
+}
+
+.panel-total {
+  font-weight: 700;
+}
+
+.panel-link {
+  margin: 0;
+  padding: 10px 24px;
+  border: 1px solid #000000;
+  border-radius: 14px;
+  background-color: #000000;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.panel-link:hover {
+  background-color: tomato;
+  border-color: tomato;
+  color: #ffffff;
+}
+
+/* Ссылка недоступна, пока состав заказа не соответствует комбо */
+.panel-link.disabled {
+  border-color: #cccccc;
+  background-color: #eeeeee;
+  color: #888888;
+  pointer-events: none;
+  cursor: default;
+}
+
+/* ===== Страница «Оформить заказ» ===== */
+.composition-section {
+  margin-bottom: 40px;
+}
+
+.empty-message {
+  font-size: 18px;
+}
+
+.empty-message a {
+  margin: 0;
+  font-size: inherit;
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .order-panel {
+    margin: 20px -20px -40px;
+    padding: 12px 20px;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+  }
+}
